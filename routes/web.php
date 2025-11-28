@@ -20,10 +20,6 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.po
 
 Route::resource('/property', PropertyController::class);
 
-Route::get('/PropertyDetail', function () {
-    return view('PropertyDetail');
-});
-
 Route::get('/Register', function () {
     return view('Register');
 });

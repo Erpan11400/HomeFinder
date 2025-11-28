@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Property;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,5 +21,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+
+        view()->composer('AddDataForm', function($view) {
+            $view->with('images', Property::select('photo')
+            ->distinct()
+            ->orderBy('photo')
+            ->get()
+            );
+        });
     }
 }

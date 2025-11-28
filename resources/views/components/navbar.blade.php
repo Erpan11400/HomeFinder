@@ -7,8 +7,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarToggle">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse gap-2" id="navbarToggle">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link active" href="{{ url('/properties') }}">Properties</a></li>
         <li class="nav-item"><a class="nav-link active" href="{{ url('/services') }}">Services</a></li>
         <li class="nav-item"><a class="nav-link active" href="{{ url('/about') }}">About</a></li>

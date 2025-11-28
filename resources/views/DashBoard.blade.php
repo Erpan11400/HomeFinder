@@ -41,7 +41,7 @@
         @foreach (['Perumahan', 'Apartemen', 'Ruko', 'Gedung'] as $category)
         <div class="col-6 col-md-3">
             <div class="p-4 rounded-4 border bg-white shadow-sm hover-shadow transition"
-                 style="cursor:pointer;">
+                style="cursor:pointer;">
                 <div class="fs-4 fw-bold text-primary mb-2">
                     {{ $category }}
                 </div>
@@ -58,7 +58,10 @@
 <section class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold">Recently Added</h2>
-        <a href="#" class="text-decoration-none fw-semibold">See all →</a>
+        <div class="d-flex justify-content-center align-items-center gap-2">
+            <a href="{{ route('property.create') }}" class="btn btn-primary">Add Property</a>
+            <a href="#" class="text-decoration-none fw-semibold">See all →</a>
+        </div>
     </div>
 
     <div class="row g-4">
@@ -71,8 +74,8 @@
                     {{-- Photo --}}
                     <div class="ratio ratio-4x3">
                         <img src="{{ $prop->photo }}"
-                             class="w-100 h-100 object-fit-cover"
-                             alt="Property {{ $prop->city }}">
+                            class="w-100 h-100 object-fit-cover"
+                            alt="Property {{ $prop->city }}">
                     </div>
 
                     {{-- Card Body --}}
@@ -90,6 +93,15 @@
                             <span class="fw-bold text-primary">
                                 Rp {{ number_format($prop->price, 0, ',', '.') }}
                             </span>
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center gap-1">
+                            <a href="{{ route('property.edit', $prop->property_id)}}" class="btn btn-warning">Edit Property</a>
+                            <form action="{{ route('property.destroy', $prop->property_id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete Property</button>
+                            </form>
                         </div>
                     </div>
 

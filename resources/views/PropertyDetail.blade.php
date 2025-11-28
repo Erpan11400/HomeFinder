@@ -8,7 +8,7 @@
         <!-- Image -->
         <div class="col-lg-6">
             <img
-                src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1000&q=80"
+                src="{{ $prop->photo }}"
                 class="img-fluid rounded-3"
                 alt="Property Image">
         </div>
