@@ -7,18 +7,15 @@ use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
-    // Menampilkan data properti saat akses pertama kali
-    public function index() {
-
-        $property = Property::all();
-
-        return view('DashBoard', compact('property'));
+    public function index()
+    {
+        $properties = Property::latest()->get(); 
+        return view('properties.index', compact('properties'));
     }
 
-    // Menampilkan detail property
-    public function show($id) {
-        $prop = Property::find($id);
-
-        return view('PropertyDetail', compact('prop'));
+    public function show($id)
+    {
+        $property = Property::findOrFail($id);
+        return view('properties.show', compact('property'));
     }
 }

@@ -2,8 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\FavoriteController;
+
+
+Route::get('/', [AuthController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -25,8 +30,4 @@ Route::get('/Register', function () {
 
 Route::get('/Login', function () {
     return view('Login');
-});
-
-Route::get('/data', function () {
-    return view('Data');
 });

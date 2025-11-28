@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('country');
             $table->decimal('bed_room');
             $table->decimal('bath_room');
-            $table->string('summary');
+            $table->string('summary')->nullable();
             $table->decimal('area_l');
             $table->decimal('area_w');
             $table->string('review');
