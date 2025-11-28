@@ -50,7 +50,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/dashboard')->with('success', 'Akun berhasil dibuat!');
+        return redirect('/property')->with('success', 'Akun berhasil dibuat!');
     }
 
     public function logout()

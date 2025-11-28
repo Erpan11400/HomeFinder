@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\viewUserData;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PropertyController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -13,9 +13,7 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 
 
-Route::get('/', function () {
-    return view('DashBoard');
-});
+Route::resource('/property', PropertyController::class);
 
 Route::get('/PropertyDetail', function () {
     return view('PropertyDetail');
@@ -29,4 +27,6 @@ Route::get('/Login', function () {
     return view('Login');
 });
 
-Route::get('/data', [viewUserData::class, 'index']);
+Route::get('/data', function () {
+    return view('Data');
+});
