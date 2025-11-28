@@ -33,6 +33,16 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
+
+    // 1 User memiliki banyak Favorite
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
 
 
     /**
