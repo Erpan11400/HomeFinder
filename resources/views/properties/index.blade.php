@@ -50,7 +50,7 @@
                     </div>
 
                     <!-- BUTTON -->
-                    <a href="{{ route('properties.show', $property->id) }}" 
+                    <a href="{{ route('property.show', $property->id) }}" 
                         class="btn btn-primary mt-auto w-100">
                         Lihat Detail
                     </a>

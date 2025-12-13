@@ -65,7 +65,7 @@
         @foreach($property as $prop)
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
 
-            <a href="{{ route('property.show', $prop) }}" class="text-decoration-none">
+            <a href="{{ route('dashboard', $prop) }}" class="text-decoration-none">
                 <div class="card border-0 shadow-sm h-100 rounded-4 overflow-hidden">
 
                     {{-- Photo --}}
