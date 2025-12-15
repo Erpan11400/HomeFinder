@@ -1,4 +1,8 @@
-@extends('template')
+@extends('layouts.Layout')
+
+@section('navbar')
+    @include('components.Navbar')
+@endsection
 
 @section('content')
 <div class="container py-5">
@@ -26,38 +30,16 @@
                         <span class="text-muted fs-6">{{ $prop->city }}, {{ $prop->country }}</span>
                     </p>
 
-                    <!-- Image Options -->
-                    <div class="row g-2 mb-4">
-                        <div class="col-6">
-                            <button class="btn btn-outline-secondary w-100">
-                                Tampilan samping
-                            </button>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn btn-outline-secondary w-100">
-                                Tampilan belakang
-                            </button>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn btn-outline-secondary w-100">
-                                Tampilan samping
-                            </button>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn btn-outline-secondary w-100">
-                                Tampilan serong
-                            </button>
-                        </div>
-                    </div>
-
+                    
                     <!-- Action Buttons -->
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-primary fw-semibold">
-                            Purchase this Property
-                        </button>
-                        <button class="btn btn-light fw-semibold">
-                            Request Info
-                        </button>
+                    <div class="d-flex w-100 gap-2">
+                        <form action="{{ route('favorite.store', $prop->property_id) }}" method="post" class="w-25">
+                            @csrf
+                            <button class="btn btn-outline-secondary w-100 fw-semibold">
+                                Add to Favorite
+                            </button>
+                        </form>
+                        <a href="{{ route('payment', $prop->property_id) }}" class="btn btn-primary flex-grow-1">Purchase this Property</a>
                     </div>
 
                 </div>

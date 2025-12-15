@@ -21,39 +21,33 @@ Route::resource('property', PropertyController::class)
 // role: user middleware
 Route::middleware(['auth', 'role:user'])->group(function () {
 
-    Route::post('/favorite/{property}', [FavoriteController::class, 'store'])
-        ->name('favorite.store');
+    Route::get('/favorite', [FavoriteController::class, 'showAll'])->name('showFavorite');
 
+    Route::post('/favorite/{property}', [FavoriteController::class, 'store'])
+    ->name('favorite.store');
+    
+    Route::delete('/favorite/{property}', [FavoriteController::class, 'destroy'])
+    ->name('favorite.remove');
+    
+    Route::get('/payment/{id}', [PropertyController::class, 'payment'])->name('payment');
+
+    Route::post('/payment/{id}', [PropertyController::class, 'purchase'])->name('checkout');
+    
 });
 
 // role: admin middleware
-
 Route::middleware(['auth', 'role:admin'])
     ->prefix('admin')
     ->as('admin.')
     ->group(function () {
 
-        Route::get('/dashboard', function () {
-            return view('admin.index');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'adminDashboard'])->name('adminDashboard');
 
-        // future admin routes
-        // Route::resource('property', AdminPropertyController::class);
+        Route::resource('property', PropertyController::class)->only(['create', 'store', 'edit', 'update', 'destroy']);
     });
 
 
-// auth routes to view form
-// Route::get('/', [AuthController::class, 'dashboard'])->name('dashboard');
-
-// Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-// Route::post('/login', [AuthController::class, 'login']);
-
-// Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-// Route::post('/register', [AuthController::class, 'register'])->name('register.post');
-
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-
+// Role: tamu saat ingin login
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])
         ->name('login');
@@ -70,27 +64,5 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
-
-
-
-// Route::resource('/property', PropertyController::class);
-
-// Sementara di comment
-
-
-// feature routes
-Route::get('/PropertyDetail', function () {
-    return view('PropertyDetail');
-});
-
-// Route::get('/Register', function () {
-//     return view('Register');
-// });
-
-// Route::get('/Login', function () {
-//     return view('Login');
-// });
-
-// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -54,7 +54,10 @@ class AuthController extends Controller
             'password' => 'required|confirmed|min:6',
         ]);
 
+        $countUser = User::where('user_id', 'like', 'US%')->count() + 1;
+
         $user = User::create([
+            'user_id' => 'US' . $countUser,
             'name'     => $request->name,
             'email'    => $request->email,
             'password' => Hash::make($request->password),
@@ -71,6 +74,8 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
+        session()->forget('prop');
 
         return redirect('/login');
     }

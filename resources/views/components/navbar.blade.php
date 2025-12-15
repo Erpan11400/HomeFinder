@@ -13,6 +13,9 @@
         <li class="nav-item"><a class="nav-link active" href="{{ url('/services') }}">Services</a></li>
         <li class="nav-item"><a class="nav-link active" href="{{ url('/about') }}">About</a></li>
         <li class="nav-item"><a class="nav-link active" href="{{ url('/contact') }}">Contact</a></li>
+        @auth
+          <li class="nav-item"><a class="nav-link active" href="{{ route('showFavorite') }}">Favorite</a></li>
+        @endauth
       </ul>
 
       
@@ -54,23 +57,14 @@
             <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
                 {{-- logout --}}
                 <li>
-                    <a class="dropdown-item text-danger d-flex align-items-center gap-2"
-                       href="#"
-                       onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
+                  <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-item text-danger d-flex align-items-center gap-2">Logout</button>
+                  </form>
                 </li>
             </ul>
 
             </div>
-
-            <form id="logout-form"
-                  action="{{ route('logout') }}"
-                  method="POST"
-                  class="d-none">
-                @csrf
-            </form>
         @endguest
 
       </div>

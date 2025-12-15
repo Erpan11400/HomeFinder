@@ -1,4 +1,8 @@
-@extends('template')
+@extends('layouts.Layout')
+
+@section('navbar')
+    @include('components.Navbar')
+@endsection
 
 @section('content')
 
@@ -59,8 +63,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold">Recently Added</h2>
         <div class="d-flex justify-content-center align-items-center gap-2">
-            <a href="{{ route('property.create') }}" class="btn btn-primary">Add Property</a>
-            <a href="#" class="text-decoration-none fw-semibold">See all →</a>
+            <a href="{{ route('property.index')}}" class="text-decoration-none fw-semibold">See all →</a>
         </div>
     </div>
 
@@ -68,7 +71,7 @@
         @foreach($property as $prop)
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
 
-            <a href="{{ route('dashboard', $prop) }}" class="text-decoration-none">
+            <a href="{{ route('property.show', $prop) }}" class="text-decoration-none">
                 <div class="card border-0 shadow-sm h-100 rounded-4 overflow-hidden">
 
                     {{-- Photo --}}
@@ -83,25 +86,16 @@
                         <h5 class="card-title fw-bold text-dark mb-1">{{ $prop->city }}, {{ $prop->country }}</h5>
 
                         <p class="text-muted small mb-2">
-                            🛏 {{ $prop->bed_room }} Beds ·
-                            🛁 {{ $prop->bath_room }} Baths ·
-                            📐 {{ $prop->area_total }} m²
+                            🛏 {{ number_format($prop->bed_room, 0) }} Beds ·
+                            🛁 {{ number_format($prop->bath_room, 0) }} Baths ·
+                            📐 {{ number_format($prop->area_l * $prop->area_w, 0, ',', '.') }} m²
                         </p>
 
                         <div class="d-flex justify-content-between align-items-center pt-2">
                             <span class="small text-secondary">👤 Agent</span>
                             <span class="fw-bold text-primary">
-                                Rp {{ number_format($prop->price, 0, ',', '.') }}
+                                Rp {{ number_format($prop->price / 1000000, 0, ',', '.') }} Juta
                             </span>
-                        </div>
-
-                        <div class="d-flex justify-content-center align-items-center gap-1">
-                            <a href="{{ route('property.edit', $prop->property_id)}}" class="btn btn-warning">Edit Property</a>
-                            <form action="{{ route('property.destroy', $prop->property_id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete Property</button>
-                            </form>
                         </div>
                     </div>
 

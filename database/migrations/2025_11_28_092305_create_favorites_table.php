@@ -9,19 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-public function up(): void
-{
-    Schema::create('favorites', function (Blueprint $table) {
-        $table->id();
-
-        $table->foreignId('user_id')->constrained()->onDelete('cascade');
-        
-        // Untuk saat ini agar bisa di hapus
-        // $table->foreignId('property_id')->constrained()->onDelete('cascade');
-
-        $table->timestamps();
-    });
-}
+    public function up(): void
+    {
+        Schema::create('favorites', function (Blueprint $table) {
+            $table->string('user_id');
+            $table->string('property_id');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('property_id')->references('property_id')->on('properties')->onDelete('cascade')->onUpdate('cascade');
+        });
+    }
 
 
     /**

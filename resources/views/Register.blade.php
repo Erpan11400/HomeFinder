@@ -1,62 +1,55 @@
-<?php
-use App\Http\Controllers\AuthController;
+@extends('layouts.Layout')
 
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+@section('navbar')
+    @include('components.Title')
+@endsection
 
-?>
+@section('content')
+<section class="d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 80px);">
+        <div class="card shadow-sm border-0 rounded-4 p-4" style="max-width: 400px; width: 100%;">
+            <div class="card-body text-center">
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | HomeFinder</title>
-    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <header class="navbar">
-        <div class="logo">Home<span>Finder</span></div>
-    </header>
-
-    <main class="auth-container">
-        <div class="auth-box">
-            <h2>Create Account 🏠</h2>
-            <p>Join HomeFinder to explore your dream property</p>
-
-            <form action="/register" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Create a password" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password_confirmation">Confirm Password</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required>
-                </div>
-
-                <button type="submit" class="btn-primary">Register</button>
-
-                <p class="switch">Already have an account?
-                    <a href="{{ url('/Login') }}">Login here</a>
+                <h3 class="fw-bold mb-2">Create Account 🏠</h3>
+                <p class="text-muted small mb-4">
+                    Join HomeFinder to explore your dream property
                 </p>
-            </form>
-        </div>
-    </main>
-</body>
 
-</html>
+                <form action="/register" method="POST">
+                    @csrf
+
+                    <div class="mb-3 text-start">
+                        <label class="form-label fw-semibold">Full Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="mb-3 text-start">
+                        <label class="form-label fw-semibold">Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="mb-3 text-start">
+                        <label class="form-label fw-semibold">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Create a password" required>
+                    </div>
+
+                    <div class="mb-3 text-start">
+                        <label class="form-label fw-semibold">Confirm Password</label>
+                        <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm your password" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 fw-semibold py-2">
+                        Register
+                    </button>
+
+                    <p class="mt-3 small text-muted">
+                        Already have an account?
+                        <a href="/login" class="text-primary fw-semibold text-decoration-none">
+                            Login here
+                        </a>
+                    </p>
+                </form>
+
+            </div>
+        </div>
+    </section>
+@endsection

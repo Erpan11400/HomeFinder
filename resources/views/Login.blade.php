@@ -1,52 +1,45 @@
-<?php
-use App\Http\Controllers\AuthController;
+@extends('layouts.Layout')
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-?>
+@section('navbar')
+    @include('components.Title')
+@endsection
+@section('content')
+<section class="d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 80px);">
+    <div class="card shadow-sm border-0 rounded-4 p-4" style="max-width: 400px; width: 100%;">
+        <div class="card-body text-center">
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | HomeFinder</title>
-    <link rel="stylesheet" href="{{ asset('css/Auth.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <header class="navbar">
-        <div class="logo">Home<span>Finder</span></div>
-    </header>
-
-    <main class="auth-container">
-        <div class="auth-box">
-            <h2>Welcome Back 👋</h2>
-            <p>Please login to your account</p>
+            <h3 class="fw-bold mb-2">Welcome Back 👋</h3>
+            <p class="text-muted small mb-4">
+                Please login to your account
+            </p>
 
             <form action="/login" method="POST">
                 @csrf
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <div class="mb-3 text-start">
+                    <label class="form-label fw-semibold">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <div class="mb-3 text-start">
+                    <label class="form-label fw-semibold">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
                 </div>
 
-                <button type="submit" class="btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary w-100 fw-semibold py-2">
+                    Login
+                </button>
 
-                <p class="switch">Don't have an account?
-                    <a href="{{ url('/Register') }}">Register here</a>
+                <p class="mt-3 small text-muted">
+                    Don't have an account?
+                    <a href="/register"
+                        class="text-primary fw-semibold text-decoration-none">
+                        Register here
+                    </a>
                 </p>
             </form>
-        </div>
-    </main>
-</body>
 
-</html>
+        </div>
+    </div>
+</section>
+@endsection

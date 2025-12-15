@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
 
-        view()->composer('AddDataForm', function($view) {
+        view()->composer('admin.AddDataForm', function($view) {
             $view->with('images', Property::select('photo')
             ->distinct()
             ->orderBy('photo')

@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('properties', function (Blueprint $table) {
-            $table->id('property_id');
+            $table->string('property_id')->primary();
             $table->string('photo');
             $table->string('owner_name');
-            $table->decimal('price');
+            $table->decimal('price', 15);
             $table->string('city');
             $table->string('state');
             $table->string('country');
@@ -25,6 +25,7 @@ return new class extends Migration
             $table->decimal('area_l');
             $table->decimal('area_w');
             $table->string('review');
+            $table->string('user_id')->nullable();
             $table->timestamps();
         });
     }
