@@ -18,6 +18,6 @@ class DashboardController extends Controller
     public function adminDashboard() {
         $prop = Property::all();
         session(['adminProp' => $prop]);
-        return view('admin.adminDashboard');
+        return view('admin.AdminDashboard');
     }
 }
