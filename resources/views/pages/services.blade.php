@@ -21,12 +21,14 @@
         <div class="row g-4">
 
             @foreach ([
-                ['icon' => '🏠', 'title' => 'Property Discovery', 'desc' => 'Explore verified residential and commercial properties with smart filters and detailed information.'],
-                ['icon' => '🔒', 'title' => 'Secure Transactions', 'desc' => 'Enjoy a safe, transparent, and trusted purchasing process supported by professionals.'],
-                ['icon' => '🧑‍💼', 'title' => 'Expert Consultation', 'desc' => 'Get professional guidance tailored to your needs and investment goals.'],
-                ['icon' => '❤️', 'title' => 'Favorite & Compare', 'desc' => 'Save and compare properties easily to make better decisions.'],
-                ['icon' => '📊', 'title' => 'Investment Insights', 'desc' => 'Access property insights to evaluate long-term value and growth potential.'],
-                ['icon' => '🤝', 'title' => 'After-Sales Support', 'desc' => 'We stay with you even after purchase to ensure satisfaction and clarity.'],
+
+    ['icon' => '🏠', 'title' => 'Property Discovery', 'desc' => 'Explore verified residential and commercial properties with smart filters and detailed information.'],
+    ['icon' => '🔒', 'title' => 'Secure Transactions', 'desc' => 'Enjoy a safe, transparent, and trusted purchasing process supported by professionals.'],
+    ['icon' => '🧑‍💼', 'title' => 'Expert Consultation', 'desc' => 'Get professional guidance tailored to your needs and investment goals.'],
+    ['icon' => '⭐', 'title' => 'Favorite & Compare', 'desc' => 'Save and compare properties easily to make better decisions.'],
+    ['icon' => '📈', 'title' => 'Investment Insights', 'desc' => 'Access property insights to evaluate long-term value and growth potential.'],
+    ['icon' => '🛠️', 'title' => 'After-Sales Support', 'desc' => 'We stay with you even after purchase to ensure satisfaction and clarity.'],
+
             ] as $service)
 
             <div class="col-md-4">

@@ -21,7 +21,7 @@
     </section>
 
     {{-- VALUES / WHY US --}}
-    <section class="py-5 bg-light rounded-4 mb-5">
+    <section class="py-5 bg-primary mb-5">
         <div class="container">
 
             <div class="row g-4">
