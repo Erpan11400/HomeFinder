@@ -74,6 +74,22 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
+// route: ganti bahasa id/en
+Route::get('/lang/{locale}', function ($locale) {
+
+    if (! in_array($locale, ['en', 'id'])) {
+        abort(400);
+    }
+
+    // session utk menyimpan prefernsi bahasa
+    session(['locale' => $locale]);
+
+    return back();
+})->name('lang.switch');
+
+
+
+
 // Navbar page:     
 Route::get('/services', [PageController::class, 'services']);
 Route::get('/about', [PageController::class, 'about']);

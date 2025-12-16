@@ -8,17 +8,20 @@
     {{-- HERO ABOUT --}}
     <section class="pt-5 pb-4">
         <div class="container text-center">
-            <h1 class="fw-bold mb-3">About HomeFinder</h1>
+            <h1 class="fw-bold mb-3">
+                {{ __('about.title') }}
+            </h1>
+
             <p class="text-muted fs-5 mx-auto" style="max-width: 720px;">
-                HomeFinder is a modern property platform built to help people discover,
-                buy, and manage properties with confidence.
+                {{ __('about.intro_1') }}
             </p>
+
             <p class="text-muted mx-auto" style="max-width: 680px;">
-                We simplify the property journey by connecting users with verified listings,
-                transparent information, and trusted professionals.
+                {{ __('about.intro_2') }}
             </p>
         </div>
     </section>
+
 
     {{-- VALUES / WHY US --}}
     <section class="py-5 bg-primary mb-5">

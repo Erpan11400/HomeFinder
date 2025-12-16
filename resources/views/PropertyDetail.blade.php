@@ -24,8 +24,9 @@
                         </h2>
 
                         <p class="text-muted mb-2">
-                            Owner: {{ $property->owner_name }}
+                            {{ __('property.owner') }}: {{ $property->owner_name }}
                         </p>
+
 
 
                         <p class="fw-semibold mb-4">
@@ -40,19 +41,22 @@
                             <div class="col-4">
                                 <div class="border rounded-3 py-3">
                                     <div class="fw-semibold">{{ $property->area_total }} m²</div>
-                                    <small class="text-muted">Total Area</small>
+                                    <small class="text-muted">{{ __('property.total_area') }}</small>
+
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="border rounded-3 py-3">
                                     <div class="fw-semibold">{{ number_format($property->bed_room, 0) }}</div>
-                                    <small class="text-muted">Bedrooms</small>
+                                    <small class="text-muted">{{ __('property.bedrooms') }}</small>
+
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="border rounded-3 py-3">
                                     <div class="fw-semibold">{{ number_format($property->bath_room, 0) }}</div>
-                                    <small class="text-muted">Bathrooms</small>
+                                    <small class="text-muted">{{ __('property.bathrooms') }}</small>
+
                                 </div>
                             </div>
                         </div>
@@ -61,8 +65,9 @@
                         {{-- Bagian purchase & favorites --}}
                         <div class="d-grid gap-2">
                             <a href="{{ route('payment', $property->property_id) }}" class="btn btn-primary fw-semibold">
-                                Purchase this Property
+                                {{ __('property.purchase') }}
                             </a>
+
 
 
                             @php
@@ -78,16 +83,18 @@
                                         <form action="{{ route('favorite.store', $property) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn btn-outline-danger fw-semibold w-100">
-                                                Add to Favorite
+                                                {{ __('property.add_favorite') }}
                                             </button>
+
                                         </form>
                                     @else
                                         <form action="{{ route('favorite.remove', $property) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger fw-semibold w-100">
-                                                Remove from Favorite
+                                                {{ __('property.remove_favorite') }}
                                             </button>
+
                                         </form>
                                     @endif
                                 @endif
@@ -96,8 +103,9 @@
                             {{-- GUEST --}}
                             @guest
                                 <a href="{{ route('login') }}" class="btn btn-outline-secondary fw-semibold">
-                                    Login to add favorite
+                                    {{ __('property.login_favorite') }}
                                 </a>
+
                             @endguest
                         </div>
 
@@ -109,7 +117,10 @@
 
         {{-- summary --}}
         <section class="mb-5">
-            <h3 class="fw-semibold mb-3">Summary</h3>
+            <h3 class="fw-semibold mb-3">
+                {{ __('property.summary') }}
+            </h3>
+
             <p class="text-secondary lh-lg">
                 {{ $property->summary }}
             </p>
@@ -144,7 +155,8 @@
             <div class="col-md-3 col-sm-6">
                 <div class="card text-center h-100">
                     <div class="card-body">
-                        <p class="text-muted mb-1">Dimensi</p>
+                        <p class="text-muted mb-1">{{ __('property.dimension') }}</p>
+
                         <h5 class="fw-semibold">
                             {{ $property->area_l }}m × {{ $property->area_w }}m
                         </h5>
@@ -155,7 +167,8 @@
             <div class="col-md-3 col-sm-6">
                 <div class="card text-center h-100">
                     <div class="card-body">
-                        <p class="text-muted mb-1">Luas Total</p>
+                        <p class="text-muted mb-1">{{ __('property.total_size') }}</p>
+
                         <h5 class="fw-semibold">
                             {{ $property->area_total }} m²
                         </h5>
@@ -166,7 +179,8 @@
             <div class="col-md-3 col-sm-6">
                 <div class="card text-center h-100">
                     <div class="card-body">
-                        <p class="text-muted mb-1">Rating</p>
+                        <p class="text-muted mb-1">{{ __('property.rating') }}</p>
+
                         <h5 class="fw-semibold">
                             {{ rand(40, 49) / 10 }} ⭐
                         </h5>
@@ -177,7 +191,8 @@
             <div class="col-md-3 col-sm-6">
                 <div class="card text-center h-100">
                     <div class="card-body">
-                        <p class="text-muted mb-1">Bedrooms</p>
+                        <p class="text-muted mb-1">{{ __('property.bedrooms') }}</p>
+
                         <h5 class="fw-semibold">{{ number_format($property->bed_room, 0) }}</h5>
                     </div>
                 </div>
@@ -189,7 +204,10 @@
 
         {{-- Lokasi map --}}
         <section class="mb-5">
-            <h4 class="fw-semibold mb-3">Location</h4>
+            <h4 class="fw-semibold mb-3">
+                {{ __('property.location') }}
+            </h4>
+
 
             <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm">
                 <iframe src="https://maps.google.com/maps?q={{ urlencode($property->city) }}&z=13&output=embed"
