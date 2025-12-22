@@ -8,8 +8,9 @@ return [
     'contact' => 'Contact',
     'favorite' => 'Favorite',
 
-    'sign_in' => 'Sign In',
-    'get_started' => 'Get Started',
+    'log_in' => 'Log In',
+    'sign_in' => 'Get Started',
+    'purchase_list' => 'Purchasement History',
     'logout' => 'Logout',
 ];
 

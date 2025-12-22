@@ -8,6 +8,7 @@ return [
     'bathrooms' => 'Bathrooms',
 
     'purchase' => 'Purchase this Property',
+    'already_sold' => 'Already Sold',
 
     'add_favorite' => 'Add to Favorite',
     'remove_favorite' => 'Remove from Favorite',

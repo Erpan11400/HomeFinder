@@ -85,17 +85,6 @@ class PropertyController extends Controller
         return redirect()->route('admin.adminDashboard');
     }
 
-    public function payment($id) {
-        $prop = Property::find($id);
-        return view('Payment')->with('property', $prop);
-    }
-
-    public function purchase($id) {
-        $property = Property::find($id);
-        $property->update(['user_id' => Auth::user()->user_id]);
-        return redirect()->route('dashboard');
-    }
-
     public function list(Request $request)
 {
     $properties = Property::when($request->search, function ($query, $search) {

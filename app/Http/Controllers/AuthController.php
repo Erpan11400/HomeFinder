@@ -31,7 +31,7 @@ class AuthController extends Controller
                 return redirect('/admin/dashboard');
             }
 
-            return redirect('/property');
+            return redirect('/');
         }
 
         return back()->withErrors([
@@ -66,7 +66,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/property')->with('success', 'Akun berhasil dibuat!');
+        return redirect('/')->with('success', 'Akun berhasil dibuat!');
     }
 
     public function logout(Request $request)
@@ -75,6 +75,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
+        session()->forget('adminProp');
         session()->forget('prop');
 
         return redirect('/login');

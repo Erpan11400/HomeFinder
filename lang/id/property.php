@@ -8,6 +8,7 @@ return [
     'bathrooms' => 'Kamar Mandi',
 
     'purchase' => 'Beli Properti Ini',
+    'already_sold' => 'Sudah Terjual',
 
     'add_favorite' => 'Tambah ke Favorit',
     'remove_favorite' => 'Hapus dari Favorit',

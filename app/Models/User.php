@@ -49,6 +49,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Property::class, 'favorites', 'user_id', 'property_id');
     }
 
+    public function purchase() {
+        return $this->hasMany(Purchasement::class, 'user_id', 'user_id');
+    }
+
     public function isAdmin(){
         return $this->role === 'admin';
     }

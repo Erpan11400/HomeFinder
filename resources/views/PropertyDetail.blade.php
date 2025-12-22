@@ -40,7 +40,7 @@
                         <div class="row g-3 mb-4 text-center">
                             <div class="col-4">
                                 <div class="border rounded-3 py-3">
-                                    <div class="fw-semibold">{{ $property->area_total }} m²</div>
+                                    <div class="fw-semibold">{{ $property->area_l * $property->area_w }} m²</div>
                                     <small class="text-muted">{{ __('property.total_area') }}</small>
 
                                 </div>
@@ -64,10 +64,13 @@
 
                         {{-- Bagian purchase & favorites --}}
                         <div class="d-grid gap-2">
+                            @if($property->user_id == null)
                             <a href="{{ route('payment', $property->property_id) }}" class="btn btn-primary fw-semibold">
                                 {{ __('property.purchase') }}
                             </a>
-
+                            @else
+                                <span class="py-2 bg-warning text-center text-danger-emphasis fw-bolder rounded">{{ __('property.already_sold')}}</span>
+                            @endif
 
 
                             @php
@@ -170,7 +173,7 @@
                         <p class="text-muted mb-1">{{ __('property.total_size') }}</p>
 
                         <h5 class="fw-semibold">
-                            {{ $property->area_total }} m²
+                            {{ $property->area_l * $property->area_w }} m²
                         </h5>
                     </div>
                 </div>

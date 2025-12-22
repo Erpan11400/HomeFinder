@@ -8,7 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\PageController;
-
+use App\Http\Controllers\PurchasementController;
 
 // landing & dashboard
 Route::get('/', [DashboardController::class, 'index'])
@@ -27,9 +27,11 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::delete('/favorite/{property}', [FavoriteController::class, 'destroy'])
     ->name('favorite.remove');
     
-    Route::get('/payment/{id}', [PropertyController::class, 'payment'])->name('payment');
+    Route::get('/payment/{id}', [PurchasementController::class, 'payment'])->name('payment');
 
-    Route::post('/payment/{id}', [PropertyController::class, 'purchase'])->name('checkout');
+    Route::post('/payment', [PurchasementController::class, 'purchase'])->name('checkout');
+
+    Route::get('/historyPurchasement/{id}', [PurchasementController::class, 'historyPurchasement'])->name('history');
 
     // property
     Route::resource('/property', PropertyController::class)

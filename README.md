@@ -95,11 +95,18 @@ HomeFinder is a web application built with Laravel, designed to help users find 
 
     Open your web browser and navigate to the URL where the application is running (e.g., `http://localhost:8000/`).
 
-2.  **Browse Properties:**
+2.  **User Accessibility**
+    *   Register first to be able to access the features, press the `Get Started` button
+    *   When you already have an account, `Log In` with the correct email account and password.
+
+3.  **Admin Accessibility**
+    *   Login using email `admin@gmail.com` and password `admin123` to access the admin dashboard. In there, admin can add, edit, or delete properties.
+
+4.  **Browse Properties:**
 
     *   To view all properties, navigate to `/property` (handled by `PropertyController@index`).
 
-3.  **View Property Details:**
+5.  **View Property Details:**
 
     *   Click on a property to view its details (accessible via `/properties/{property_id}`, handled by `PropertyController@show`).  You'll see information such as price, bedrooms, bathrooms, area, summary, and available images.
 

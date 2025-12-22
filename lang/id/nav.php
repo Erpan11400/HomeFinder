@@ -8,7 +8,8 @@ return [
     'contact' => 'Kontak',
     'favorite' => 'Favorit',
 
-    'sign_in' => 'Masuk',
-    'get_started' => 'Daftar',
+    'log_in' => 'Masuk',
+    'sign_in' => 'Daftar',
+    'purchase_list' => 'Riwayat Pembelian',
     'logout' => 'Keluar',
 ];

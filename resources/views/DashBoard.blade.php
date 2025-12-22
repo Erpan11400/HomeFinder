@@ -111,4 +111,34 @@
     </div>
 </section>
 
+<div aria-live="polite" aria-atomic="true" class="position-relative">
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="myToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Notifikasi</strong>
+        <small>Baru</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+      </div>
+      <div class="toast-body">
+        {{ session('success')}}
+      </div>
+    </div>
+  </div>
+</div>
+
+@if(session('success'))
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toastEl = document.getElementById('myToast')
+
+    const toast = new bootstrap.Toast(toastEl, {
+      delay: 2000,
+      autohide: true
+    })
+
+    toast.show()
+  })
+</script>
+@endif
+
 @endsection

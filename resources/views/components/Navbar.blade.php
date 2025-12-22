@@ -67,11 +67,11 @@
                 {{-- AUTH --}}
                 @guest
                     <a href="{{ route('login') }}" class="btn btn-primary">
-                        {{ __('nav.sign_in') }}
+                        {{ __('nav.log_in') }}
                     </a>
 
                     <a href="{{ route('register') }}" class="btn btn-light border border-primary">
-                        {{ __('nav.get_started') }}
+                        {{ __('nav.sign_in') }}
                     </a>
                 @else
                     {{-- USER DROPDOWN --}}
@@ -95,6 +95,10 @@
 
                         {{-- DROPDOWN MENU --}}
                         <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                            <li>
+                                <a href="{{ route('history', auth()->user()->user_id) }}" class="dropdown-item">{{ __('nav.purchase_list')}}</a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
